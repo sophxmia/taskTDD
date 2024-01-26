@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
+
+    private static final double EPS = 0.001;
     Main main;
 
     @BeforeEach
@@ -26,5 +28,9 @@ class MainTest {
         double result1 = main.calculateFunction(x1, a, b, c);
         double result2 = main.calculateFunction(x2, a, b, c);
         double result3 = main.calculateFunction(x3, a, b, c);
+
+        assertEquals(5.0, result1, EPS);
+        assertEquals(2.844, result2,EPS);
+        assertEquals(0.375, result3, EPS);
     }
 }
