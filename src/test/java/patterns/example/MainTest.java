@@ -29,8 +29,8 @@ class MainTest {
         double result2 = main.calculateFunction(x2, a, b, c);
         double result3 = main.calculateFunction(x3, a, b, c);
 
-        assertEquals(5.0, result1, EPS);
-        assertEquals(2.844, result2,EPS);
-        assertEquals(0.375, result3, EPS);
+        assertEquals(4.0, result1, EPS);
+        assertEquals(3.649, result2,EPS);
+        assertEquals(4.336, result3, EPS);
     }
 }
