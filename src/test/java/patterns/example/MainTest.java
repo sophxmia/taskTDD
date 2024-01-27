@@ -15,6 +15,14 @@ class MainTest {
         main = new Main();
     }
 
+
+    @Test
+    void testCalculateFunctionWithError(){
+        assertThrows(UnsupportedOperationException.class, () ->{
+            main.calculateFunction(0.0,0.0,0.0,0.0);
+        });
+    }
+
     @Test
     void testCalculateFunction() {
         double x1 = 0.0;
