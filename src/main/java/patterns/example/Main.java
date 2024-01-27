@@ -16,9 +16,31 @@ public class Main {
         double b = -0.3;
         double c = 4.0;
 
-        double result = calculateFunction(x, a, b, c);
+        System.out.println("Input values:");
+        System.out.println("x: " + x);
+        System.out.println("a: " + a);
+        System.out.println("b: " + b);
+        System.out.println("c: " + c);
 
-        System.out.println("Result: " + result);
+        double result = calculateFunction(x, a, b, c);
+        System.out.println("\nResult of the function calculation: " + result);
+
+        double start = 0.0;
+        double end = 2.0;
+        double step = 0.002;
+
+        double[] functionValues = generateFunctionValues(start, end, step, a, b, c);
+        int maxIndex = findMaxIndex(functionValues);
+        int minIndex = findMinIndex(functionValues);
+        double sum = calculateSum(functionValues);
+        double average = calculateAverage(functionValues);
+
+        System.out.println("\nAdditional results:");
+        System.out.println("Max element: " + functionValues[maxIndex] + " at argument: " + calculateArgumentValues(start, end, step)[maxIndex]);
+        System.out.println("Min element: " + functionValues[minIndex] + " at argument: " + calculateArgumentValues(start, end, step)[minIndex]);
+        System.out.println("Sum of elements: " + sum);
+        System.out.println("Average: " + average);
+
     }
 
     /**
@@ -137,6 +159,7 @@ public class Main {
 
     /**
      * Display the maximum element and its corresponding argument value
+     *
      * @param values an array of function values
      */
     public void displayMaxElement(double[] values) {
@@ -144,7 +167,7 @@ public class Main {
         double maxValue = values[maxIndex];
         double maxArgument = calculateArgumentValues(0.0, 2.0, 0.002)[maxIndex];
 
-        System.out.println("Max element: " + maxValue + " at argument: " + maxArgument);
+        System.out.println("Max element: " + maxValue + " at argument: " + maxArgument + ", index: " + maxIndex);
     }
 
     /**
@@ -158,7 +181,7 @@ public class Main {
         double minValue = values[minIndex];
         double minArgument = calculateArgumentValues(0.0, 2.0, 0.002)[minIndex];
 
-        System.out.println("Max element: " + minValue + " at argument: " + minArgument);
+        System.out.println("Min element: " + minValue + " at argument: " + minArgument + ", index: " + minIndex);
     }
 
     /**
