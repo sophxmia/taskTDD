@@ -95,4 +95,70 @@ public class Main {
         }
         return values;
     }
+
+    /**
+     * Finds the number of the largest element in the array of function values
+     *
+     * @param values an array of function values
+     * @return the number of the largest element
+     */
+    public int findMaxIndex(double[] values) {
+        if (values.length == 0) throw new IllegalArgumentException("An array can't be empty");
+
+        int maxIndex = 0;
+
+        for (int i = 1; i < values.length; i++) {
+            if (values[i] > values[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+
+        return maxIndex;
+    }
+
+    /**
+     * Finds the number of the smallest element in the array of function values
+     *
+     * @param values an array of function values
+     * @return the number of the smallest element
+     */
+    public int findMinIndex(double[] values) {
+        if (values.length == 0) throw new IllegalArgumentException("An array can't be empty");
+
+        int minIndex = 0;
+
+        for (int i = 1; i < values.length; i++) {
+            if (values[i] < values[minIndex]) {
+                minIndex = i;
+            }
+        }
+
+        return minIndex;
+    }
+
+    /**
+     * Calculates the sum of the elements of the array of function values
+     * @param values an array of function values
+     * @return sum of elements
+     */
+    public double calculateSum(double[] values) {
+        double sum = 0;
+
+        for (double value : values) sum += value;
+
+        return sum;
+    }
+
+    /**
+     * Calculates the average of the elements of the array of function values
+     * @param values an array of function values
+     * @return average
+     */
+    public double calculateAverage(double[] values) {
+        if (values.length == 0) throw new IllegalArgumentException("An array can't be empty");
+
+        double sum = calculateSum(values);
+
+        return sum / values.length;
+    }
 }
