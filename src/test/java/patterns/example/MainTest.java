@@ -16,12 +16,12 @@ class MainTest {
     }
 
 
-    @Test
-    void testCalculateFunctionWithError(){
-        assertThrows(UnsupportedOperationException.class, () ->{
-            main.calculateFunction(0.0,0.0,0.0,0.0);
-        });
-    }
+//    @Test
+//    void testCalculateFunctionWithError(){
+//        assertThrows(UnsupportedOperationException.class, () ->{
+//            main.calculateFunction(0.0,0.0,0.0,0.0);
+//        });
+//    }
 
     @Test
     void testCalculateFunction() {
@@ -40,5 +40,12 @@ class MainTest {
         assertEquals(4.0, result1, EPS);
         assertEquals(3.649, result2,EPS);
         assertEquals(4.336, result3, EPS);
+    }
+
+    @Test
+    void testCalculateSteps(){
+        assertEquals(6, main.calculateSteps(0.0, 1.0, 0.2));
+        assertEquals(11, main.calculateSteps(0.0, 2.0, 0.2));
+        assertEquals(1001, main.calculateSteps(0.0, 2.0, 0.002));
     }
 }

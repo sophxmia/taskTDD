@@ -2,7 +2,7 @@ package patterns.example;
 
 /**
  * @author Sofia Maliarenko
- *
+ * <p>
  * Task
  */
 
@@ -24,6 +24,7 @@ public class Main {
 
     /**
      * Counts the function's y-result
+     *
      * @param x x-value
      * @param a a-value
      * @param b b-value
@@ -38,5 +39,19 @@ public class Main {
         } else {
             return (a + b * x) + Math.sqrt(Math.pow(x, 2) + 1);
         }
+    }
+
+    /**
+     * Count the number of steps for tabulation
+     * @param start start value
+     * @param end end value
+     * @param step step
+     * @return number of steps
+     */
+    public int calculateSteps(double start, double end, double step) {
+        if (step <= 0) {
+            throw new IllegalArgumentException("The step must be more than 0");
+        }
+        return (int) Math.ceil((end - start) / step) + 1;
     }
 }
