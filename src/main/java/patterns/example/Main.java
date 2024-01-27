@@ -6,41 +6,63 @@ package patterns.example;
  */
 
 public class Main {
+
+    private static final double X = 1.4;
+    private static final double START_X = 0.0;
+    private static final double END_X = 2.0;
+    private static final double STEP_X = 0.002;
+
     public static void main(String[] args) {
         new Main().run();
     }
 
     private void run() {
-        double x = 1.4;
-        double a = 2.7;
-        double b = -0.3;
-        double c = 4.0;
+        double x = X;
+        double coefficientA = 2.7;
+        double coefficientB = -0.3;
+        double coefficientC = 4.0;
 
+        printInputValues(x, coefficientA, coefficientB, coefficientC);
+
+        double result = calculateFunction(x, coefficientA, coefficientB, coefficientC);
+        printFunctionResult(result);
+
+        double[] functionValues = generateFunctionValues(START_X, END_X, STEP_X, coefficientA, coefficientB, coefficientC);
+        printAdditionalResults(functionValues);
+    }
+    private void printInputValues(double x, double a, double b, double c) {
         System.out.println("Input values:");
         System.out.println("x: " + x);
         System.out.println("a: " + a);
         System.out.println("b: " + b);
         System.out.println("c: " + c);
+    }
 
-        double result = calculateFunction(x, a, b, c);
+    private void printFunctionResult(double result) {
         System.out.println("\nResult of the function calculation: " + result);
+    }
 
-        double start = 0.0;
-        double end = 2.0;
-        double step = 0.002;
+    private double[] calculateArguments() {
+        int steps = calculateSteps(Main.START_X, Main.END_X, Main.STEP_X);
+        double[] values = new double[steps];
 
-        double[] functionValues = generateFunctionValues(start, end, step, a, b, c);
+        for (int i = 0; i < steps; i++) {
+            values[i] = Main.START_X + i * Main.STEP_X;
+        }
+        return values;
+    }
+
+    private void printAdditionalResults(double[] functionValues) {
         int maxIndex = findMaxIndex(functionValues);
         int minIndex = findMinIndex(functionValues);
         double sum = calculateSum(functionValues);
         double average = calculateAverage(functionValues);
 
         System.out.println("\nAdditional results:");
-        System.out.println("Max element: " + functionValues[maxIndex] + " at argument: " + calculateArgumentValues(start, end, step)[maxIndex]);
-        System.out.println("Min element: " + functionValues[minIndex] + " at argument: " + calculateArgumentValues(start, end, step)[minIndex]);
+        System.out.println("Max element: " + functionValues[maxIndex] + " at argument: " + calculateArguments()[maxIndex]);
+        System.out.println("Min element: " + functionValues[minIndex] + " at argument: " + calculateArguments()[minIndex]);
         System.out.println("Sum of elements: " + sum);
         System.out.println("Average: " + average);
-
     }
 
     /**
