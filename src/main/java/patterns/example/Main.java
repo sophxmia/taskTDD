@@ -30,6 +30,15 @@ public class Main {
         double[] functionValues = generateFunctionValues(START_X, END_X, STEP_X, coefficientA, coefficientB, coefficientC);
         printAdditionalResults(functionValues);
     }
+
+    /**
+     * Prints the input values of x, a, b, and c.
+     *
+     * @param x The x-value
+     * @param a The a-value
+     * @param b The b-value
+     * @param c The c-value
+     */
     private void printInputValues(double x, double a, double b, double c) {
         System.out.println("Input values:");
         System.out.println("x: " + x);
@@ -38,10 +47,20 @@ public class Main {
         System.out.println("c: " + c);
     }
 
+    /**
+     * Prints the result of the function calculation.
+     *
+     * @param result The result of the function calculation
+     */
     private void printFunctionResult(double result) {
         System.out.println("\nResult of the function calculation: " + result);
     }
 
+    /**
+     * Calculates and returns an array of argument values within the specified interval and step.
+     *
+     * @return An array of argument values
+     */
     private double[] calculateArguments() {
         int steps = calculateSteps(Main.START_X, Main.END_X, Main.STEP_X);
         double[] values = new double[steps];
@@ -52,6 +71,11 @@ public class Main {
         return values;
     }
 
+    /**
+     * Prints additional results including max element, min element, sum, and average.
+     *
+     * @param functionValues The array of function values
+     */
     private void printAdditionalResults(double[] functionValues) {
         int maxIndex = findMaxIndex(functionValues);
         int minIndex = findMinIndex(functionValues);
