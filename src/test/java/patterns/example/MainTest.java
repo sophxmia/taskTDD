@@ -120,4 +120,18 @@ class MainTest {
 
         assertEquals(expectedAverage, result, EPS);
     }
+
+    @Test
+    void testDisplayMaxElement(){
+        double[] values = {4.0, 3.649, 3.298, 2.947};
+        System.out.println("Max Element Test:");
+        main.displayMaxElement(values);
+    }
+
+    @Test
+    void testDisplayMinElement(){
+        double[] values = {4.0, 3.649, 3.298, 2.947};
+        System.out.println("Min Element Test:");
+        main.displayMinElement(values);
+    }
 }

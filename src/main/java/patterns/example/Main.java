@@ -2,8 +2,7 @@ package patterns.example;
 
 /**
  * @author Sofia Maliarenko
- * <p>
- * Task
+ * Task №3
  */
 
 public class Main {
@@ -137,7 +136,34 @@ public class Main {
     }
 
     /**
+     * Display the maximum element and its corresponding argument value
+     * @param values an array of function values
+     */
+    public void displayMaxElement(double[] values) {
+        int maxIndex = findMaxIndex(values);
+        double maxValue = values[maxIndex];
+        double maxArgument = calculateArgumentValues(0.0, 2.0, 0.002)[maxIndex];
+
+        System.out.println("Max element: " + maxValue + " at argument: " + maxArgument);
+    }
+
+    /**
+     * Display the minimum element and its corresponding argument value
+     *
+     * @param values an array of function values
+     */
+
+    public void displayMinElement(double[] values) {
+        int minIndex = findMinIndex(values);
+        double minValue = values[minIndex];
+        double minArgument = calculateArgumentValues(0.0, 2.0, 0.002)[minIndex];
+
+        System.out.println("Max element: " + minValue + " at argument: " + minArgument);
+    }
+
+    /**
      * Calculates the sum of the elements of the array of function values
+     *
      * @param values an array of function values
      * @return sum of elements
      */
@@ -151,6 +177,7 @@ public class Main {
 
     /**
      * Calculates the average of the elements of the array of function values
+     *
      * @param values an array of function values
      * @return average
      */
