@@ -43,9 +43,10 @@ public class Main {
 
     /**
      * Count the number of steps for tabulation
+     *
      * @param start start value
-     * @param end end value
-     * @param step step
+     * @param end   end value
+     * @param step  step
      * @return number of steps
      */
     public int calculateSteps(double start, double end, double step) {
@@ -53,5 +54,45 @@ public class Main {
             throw new IllegalArgumentException("The step must be more than 0");
         }
         return (int) Math.ceil((end - start) / step) + 1;
+    }
+
+    /**
+     * Create an array of function values for the specified interval and step
+     *
+     * @param start initial value of an argument
+     * @param end   final value of an argument
+     * @param step  step
+     * @param a     a-value
+     * @param b     b-value
+     * @param c     c-value
+     * @return an array of y-function values
+     */
+    public double[] generateFunctionValues(double start, double end, double step, double a, double b, double c) {
+        int steps = calculateSteps(start, end, step);
+        double[] values = new double[steps];
+
+        for (int i = 0; i < steps; i++) {
+            double x = start + i * step;
+            values[i] = calculateFunction(x, a, b, c);
+        }
+        return values;
+    }
+
+    /**
+     * Create an array of arguments for the specified interval and step
+     *
+     * @param start initial value of an argument
+     * @param end   final value of an argument
+     * @param step  step
+     * @return array of arguments
+     */
+    public double[] calculateArgumentValues(double start, double end, double step) {
+        int steps = calculateSteps(start, end, step);
+        double[] values = new double[steps];
+
+        for (int i = 0; i < steps; i++) {
+            values[i] = start + i * step;
+        }
+        return values;
     }
 }

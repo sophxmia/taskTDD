@@ -15,14 +15,6 @@ class MainTest {
         main = new Main();
     }
 
-
-//    @Test
-//    void testCalculateFunctionWithError(){
-//        assertThrows(UnsupportedOperationException.class, () ->{
-//            main.calculateFunction(0.0,0.0,0.0,0.0);
-//        });
-//    }
-
     @Test
     void testCalculateFunction() {
         double x1 = 0.0;
@@ -47,5 +39,45 @@ class MainTest {
         assertEquals(6, main.calculateSteps(0.0, 1.0, 0.2));
         assertEquals(11, main.calculateSteps(0.0, 2.0, 0.2));
         assertEquals(1001, main.calculateSteps(0.0, 2.0, 0.002));
+    }
+
+    @Test
+    void testGenerateFunctionValues(){
+        double start = 0.0;
+        double end = 2.0;
+        double step = 0.002;
+
+        double a = 2.7;
+        double b = -0.3;
+        double c = 4.0;
+
+        int steps = main.calculateSteps(start, end, step);
+        double[] expectedValues = new double[steps];
+
+        for (int i = 0; i < steps; i++) {
+            double x = start + i * step;
+            expectedValues[i] = main.calculateFunction(x, a, b, c);
+        }
+
+        double[] resultValues = main.generateFunctionValues(start, end, step, a, b,c);
+        assertArrayEquals(expectedValues, resultValues, EPS);
+    }
+
+    @Test
+    void testCalculateArgumentValues(){
+        double start = 0.0;
+        double end = 2.0;
+        double step = 0.002;
+
+        int steps = main.calculateSteps(start, end, step);
+        double[] expectedValues = new double[steps];
+
+        for (int i = 0; i < steps; i++) {
+            expectedValues[i] = start + i * step;
+        }
+
+        double[] resultValues = main.calculateArgumentValues(start, end, step);
+
+        assertArrayEquals(expectedValues, resultValues, EPS);
     }
 }
